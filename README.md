@@ -2,4 +2,5 @@
 Group 10 Project
 
 Members:
-  Clifford (Mason) Reiselt
+
+- Clifford (Mason) Reiselt
