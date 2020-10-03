@@ -4,3 +4,5 @@ Group 10 Project
 Members:
 
 - Clifford (Mason) Reiselt
+
+- Dylan Bodvig
