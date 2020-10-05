@@ -6,3 +6,5 @@ Members:
 - Clifford (Mason) Reiselt
 
 - Dylan Bodvig
+
+- Nam Nguyen
