@@ -10,25 +10,37 @@ namespace ExpertFinder.DummyData
     {
       // follow this paradigm when adding dummy data
       // check that it does not exist, then add what you need and save it
-      var userExists = dbContext.Users
-        .Where(u => u.Name == "mason")
-        .FirstOrDefault();
-
-      if (userExists == null)
+      var usersExist = dbContext.Users.Any();
+      if (!usersExist)
       {
-        dbContext.Add(new Users { Name = "mason", Email = "reiseltc@oregonstate.edu" });
-        dbContext.SaveChanges();
+        dbContext.Add(new User { Name = "mason", Email = "reiseltc@oregonstate.edu" });
+        dbContext.Add(new User { Name = "john smith", Email = "smithj@oregonstate.edu" });
       }
 
-      userExists = dbContext.Users
-        .Where(u => u.Name == "john smith")
-        .FirstOrDefault();
-
-      if (userExists == null)
+      var titlesExist = dbContext.Titles.Any();
+      if (!titlesExist)
       {
-        dbContext.Add(new Users { Name = "john smith", Email = "smithj@oregonstate.edu" });
-        dbContext.SaveChanges();
+        dbContext.Add(new Title { Value = "Mr." });
+        dbContext.Add(new Title { Value = "Ms." });
       }
+
+      var skillsExist = dbContext.Skills.Any();
+      if (!skillsExist)
+      {
+        dbContext.Add(new Skill { Name = "c++" });
+        dbContext.Add(new Skill { Name = ".net" });
+        dbContext.Add(new Skill { Name = "js" });
+      }
+
+      dbContext.SaveChanges();
+
+      var profilesExist = dbContext.Profiles.Any();
+      if (!profilesExist)
+      {
+        dbContext.Add(new Profile { FirstName = "Mason", LastName = "Reiselt", Title = dbContext.Titles.Where(t => t.Value == "Mr.").First() });
+      }
+
+      dbContext.SaveChanges();
     }
   }
 }

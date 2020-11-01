@@ -5,6 +5,6 @@ namespace ExpertFinder.Repositories
 {
   public interface IUserRepo
   {
-    Task<Users> GetUserAsync(string name);
+    Task<User> GetUserAsync(string name);
   }
 }

@@ -1,4 +1,4 @@
-using ExpertFinder.Models;
+using ExpertFinder.Projections;
 using System.Threading.Tasks;
 
 namespace ExpertFinder.Repositories

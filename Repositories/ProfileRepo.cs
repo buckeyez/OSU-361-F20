@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ExpertFinder.Data;
-using ExpertFinder.Models;
+using ExpertFinder.Projections;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +20,12 @@ namespace ExpertFinder.Repositories
       return _db.Profiles
         .AsQueryable()
         .Where(p => p.Id == id)
+        .Select(p => new Profile
+        {
+          Title = p.Title.Value,
+          FirstName = p.FirstName,
+          LastName = p.LastName
+        })
         .FirstOrDefaultAsync();
     }
   }

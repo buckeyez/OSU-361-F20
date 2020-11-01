@@ -23,15 +23,17 @@ namespace ExpertFinder.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TitleId")
+                    b.Property<int?>("TitleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -43,32 +45,29 @@ namespace ExpertFinder.Migrations
                     b.ToTable("Profiles");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Skills", b =>
+            modelBuilder.Entity("ExpertFinder.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ProfileId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Skill")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
-
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Titles", b =>
+            modelBuilder.Entity("ExpertFinder.Models.Title", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Value")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -76,16 +75,18 @@ namespace ExpertFinder.Migrations
                     b.ToTable("Titles");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Users", b =>
+            modelBuilder.Entity("ExpertFinder.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -95,24 +96,13 @@ namespace ExpertFinder.Migrations
 
             modelBuilder.Entity("ExpertFinder.Models.Profile", b =>
                 {
-                    b.HasOne("ExpertFinder.Models.Titles", "Title")
+                    b.HasOne("ExpertFinder.Models.Title", "Title")
                         .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TitleId");
 
-                    b.HasOne("ExpertFinder.Models.Users", "User")
+                    b.HasOne("ExpertFinder.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ExpertFinder.Models.Skills", b =>
-                {
-                    b.HasOne("ExpertFinder.Models.Profile", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("ProfileId");
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
