@@ -1,0 +1,35 @@
+{
+  "name": "expertfinder",
+  "version": "1.0.0",
+  "description": "OSU CS 361 Fall 2020 Group 10 Project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buckeyez/OSU-361-F20.git"
+  },
+  "author": "Mason Reiselt <reiseltc@oregonstate.edu>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/buckeyez/OSU-361-F20/issues"
+  },
+  "homepage": "https://github.com/buckeyez/OSU-361-F20#readme",
+  "devDependencies": {
+    "aspnet-webpack": "^3.0.0",
+    "axios": "^0.21.0",
+    "css-loader": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.4",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "dependencies": {
+    "minireset.css": "0.0.6"
+  }
+}
