@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ExpertFinder.Models;
+using ExpertFinder.Projections;
 using ExpertFinder.Repositories;
 using System.Threading.Tasks;
 

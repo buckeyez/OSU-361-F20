@@ -23,15 +23,17 @@ namespace ExpertFinder.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TitleId")
+                    b.Property<int?>("TitleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -49,15 +51,11 @@ namespace ExpertFinder.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ProfileId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Skill")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProfileId");
 
                     b.ToTable("Skills");
                 });
@@ -69,6 +67,7 @@ namespace ExpertFinder.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -83,9 +82,11 @@ namespace ExpertFinder.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -97,22 +98,11 @@ namespace ExpertFinder.Migrations
                 {
                     b.HasOne("ExpertFinder.Models.Titles", "Title")
                         .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TitleId");
 
                     b.HasOne("ExpertFinder.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ExpertFinder.Models.Skills", b =>
-                {
-                    b.HasOne("ExpertFinder.Models.Profile", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("ProfileId");
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
