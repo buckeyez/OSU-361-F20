@@ -37,7 +37,23 @@ namespace ExpertFinder.DummyData
       var profilesExist = dbContext.Profiles.Any();
       if (!profilesExist)
       {
-        dbContext.Add(new Profile { FirstName = "Mason", LastName = "Reiselt", Title = dbContext.Titles.Where(t => t.Value == "Mr.").First() });
+        dbContext.Add(new Profile
+        {
+          FirstName = "Mason",
+          LastName = "Reiselt",
+          Title = dbContext.Titles
+            .Where(t => t.Value == "Mr.")
+            .First()
+        });
+      }
+
+      dbContext.SaveChanges();
+
+      var hasProfileSkillsMapping = dbContext.ProfileSkills.Any();
+      if (!hasProfileSkillsMapping)
+      {
+        dbContext.Add(new ProfileSkills { ProfileId = 1, SkillId = 1 });
+        dbContext.Add(new ProfileSkills { ProfileId = 1, SkillId = 2 });
       }
 
       dbContext.SaveChanges();

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ExpertFinder.Projections
 {
   public class Profile
@@ -5,5 +7,6 @@ namespace ExpertFinder.Projections
     public string Title { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public ICollection<string> Skills { get; set; }
   }
 }

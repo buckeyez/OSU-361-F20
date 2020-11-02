@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpertFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201102004918_init")]
+    [Migration("20201102025436_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,21 @@ namespace ExpertFinder.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("ExpertFinder.Models.ProfileSkills", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ProfileId", "SkillId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("ProfileSkills");
                 });
 
             modelBuilder.Entity("ExpertFinder.Models.Skill", b =>
@@ -105,6 +120,21 @@ namespace ExpertFinder.Migrations
                     b.HasOne("ExpertFinder.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("ExpertFinder.Models.ProfileSkills", b =>
+                {
+                    b.HasOne("ExpertFinder.Models.Profile", "Profile")
+                        .WithMany("ProfileSkills")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ExpertFinder.Models.Skill", "Skill")
+                        .WithMany("ProfileSkills")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
