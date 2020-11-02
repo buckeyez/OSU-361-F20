@@ -15,7 +15,7 @@ namespace ExpertFinder.Repositories
       _db = db;
     }
 
-    public Task<Users> GetUserAsync(string name)
+    public Task<User> GetUserAsync(string name)
     {
       return _db.Users
         .AsQueryable()

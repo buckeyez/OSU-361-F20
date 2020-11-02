@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ExpertFinder.Models
 {
-  public class Skills
+  public class Title
   {
     public int Id { get; set; }
     [Required]
-    public string Skill { get; set; }
+    public string Value { get; set; }
   }
 }

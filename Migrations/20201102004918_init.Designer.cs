@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpertFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201101233653_init")]
+    [Migration("20201102004918_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,13 +47,13 @@ namespace ExpertFinder.Migrations
                     b.ToTable("Profiles");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Skills", b =>
+            modelBuilder.Entity("ExpertFinder.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Skill")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -62,13 +62,13 @@ namespace ExpertFinder.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Titles", b =>
+            modelBuilder.Entity("ExpertFinder.Models.Title", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -77,7 +77,7 @@ namespace ExpertFinder.Migrations
                     b.ToTable("Titles");
                 });
 
-            modelBuilder.Entity("ExpertFinder.Models.Users", b =>
+            modelBuilder.Entity("ExpertFinder.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -98,11 +98,11 @@ namespace ExpertFinder.Migrations
 
             modelBuilder.Entity("ExpertFinder.Models.Profile", b =>
                 {
-                    b.HasOne("ExpertFinder.Models.Titles", "Title")
+                    b.HasOne("ExpertFinder.Models.Title", "Title")
                         .WithMany()
                         .HasForeignKey("TitleId");
 
-                    b.HasOne("ExpertFinder.Models.Users", "User")
+                    b.HasOne("ExpertFinder.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });

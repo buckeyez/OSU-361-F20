@@ -13,23 +13,23 @@ namespace ExpertFinder.DummyData
       var usersExist = dbContext.Users.Any();
       if (!usersExist)
       {
-        dbContext.Add(new Users { Name = "mason", Email = "reiseltc@oregonstate.edu" });
-        dbContext.Add(new Users { Name = "john smith", Email = "smithj@oregonstate.edu" });
+        dbContext.Add(new User { Name = "mason", Email = "reiseltc@oregonstate.edu" });
+        dbContext.Add(new User { Name = "john smith", Email = "smithj@oregonstate.edu" });
       }
 
       var titlesExist = dbContext.Titles.Any();
       if (!titlesExist)
       {
-        dbContext.Add(new Titles { Title = "Mr." });
-        dbContext.Add(new Titles { Title = "Ms." });
+        dbContext.Add(new Title { Value = "Mr." });
+        dbContext.Add(new Title { Value = "Ms." });
       }
 
       var skillsExist = dbContext.Skills.Any();
       if (!skillsExist)
       {
-        dbContext.Add(new Skills { Skill = "c++" });
-        dbContext.Add(new Skills { Skill = ".net" });
-        dbContext.Add(new Skills { Skill = "js" });
+        dbContext.Add(new Skill { Name = "c++" });
+        dbContext.Add(new Skill { Name = ".net" });
+        dbContext.Add(new Skill { Name = "js" });
       }
 
       dbContext.SaveChanges();
@@ -37,7 +37,7 @@ namespace ExpertFinder.DummyData
       var profilesExist = dbContext.Profiles.Any();
       if (!profilesExist)
       {
-        dbContext.Add(new Profile { FirstName = "Mason", LastName = "Reiselt", Title = dbContext.Titles.Where(t => t.Title == "Mr.").First() });
+        dbContext.Add(new Profile { FirstName = "Mason", LastName = "Reiselt", Title = dbContext.Titles.Where(t => t.Value == "Mr.").First() });
       }
 
       dbContext.SaveChanges();

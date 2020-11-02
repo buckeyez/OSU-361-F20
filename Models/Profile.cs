@@ -11,7 +11,7 @@ namespace ExpertFinder.Models
     [Required]
     public string LastName { get; set; }
 
-    public Titles Title { get; set; }
-    public Users User { get; set; }
+    public Title Title { get; set; }
+    public User User { get; set; }
   }
 }

@@ -17,7 +17,7 @@ namespace ExpertFinder.Controllers
     }
 
     [HttpGet("{name}")]
-    public async Task<ActionResult<Users>> GetUser(string name)
+    public async Task<ActionResult<User>> GetUser(string name)
     {
       var result = await _userRepo.GetUserAsync(name);
 

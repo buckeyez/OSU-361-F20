@@ -22,7 +22,7 @@ namespace ExpertFinder.Repositories
         .Where(p => p.Id == id)
         .Select(p => new Profile
         {
-          Title = p.Title.Title,
+          Title = p.Title.Value,
           FirstName = p.FirstName,
           LastName = p.LastName
         })

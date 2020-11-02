@@ -12,7 +12,7 @@ namespace ExpertFinder.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Skill = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +25,7 @@ namespace ExpertFinder.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(nullable: false)
+                    Value = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
