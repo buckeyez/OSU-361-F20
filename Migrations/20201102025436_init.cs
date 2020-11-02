@@ -74,6 +74,30 @@ namespace ExpertFinder.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProfileSkills",
+                columns: table => new
+                {
+                    ProfileId = table.Column<int>(nullable: false),
+                    SkillId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProfileSkills", x => new { x.ProfileId, x.SkillId });
+                    table.ForeignKey(
+                        name: "FK_ProfileSkills_Profiles_ProfileId",
+                        column: x => x.ProfileId,
+                        principalTable: "Profiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProfileSkills_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Profiles_TitleId",
                 table: "Profiles",
@@ -83,10 +107,18 @@ namespace ExpertFinder.Migrations
                 name: "IX_Profiles_UserId",
                 table: "Profiles",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProfileSkills_SkillId",
+                table: "ProfileSkills",
+                column: "SkillId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ProfileSkills");
+
             migrationBuilder.DropTable(
                 name: "Profiles");
 

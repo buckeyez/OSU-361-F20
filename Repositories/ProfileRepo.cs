@@ -24,7 +24,11 @@ namespace ExpertFinder.Repositories
         {
           Title = p.Title.Value,
           FirstName = p.FirstName,
-          LastName = p.LastName
+          LastName = p.LastName,
+          Skills = p.ProfileSkills
+            .Where(ps => ps.ProfileId == p.Id)
+            .Select(ps => ps.Skill.Name)
+            .ToList()
         })
         .FirstOrDefaultAsync();
     }

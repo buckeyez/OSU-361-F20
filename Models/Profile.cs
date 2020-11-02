@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ExpertFinder.Models
@@ -12,5 +13,7 @@ namespace ExpertFinder.Models
 
     public Title Title { get; set; }
     public User User { get; set; }
+
+    public ICollection<ProfileSkills> ProfileSkills { get; set; }
   }
 }

@@ -91,6 +91,10 @@ Repositories, as mentioned above in the Axios section, are used to access the da
 
 Controllers provide routing for the server. For the most part, they will just call their corresponding repository methods. You specify the routes with the attribute tag `[Route("<path>")]`. Please take some time to review how these are currently done.
 
+### Projections
+
+Projections represent the data, in the form we want, that will be sent from the server to the client. This is also relatively straight forward (1 for 1).
+
 ### Dummy Data
 
 Want to add some dummy data to the database for testing and viewing? Use the `DummyData.cs` static class to handle this. There is an example there already, this part should be relatively straight forward.
