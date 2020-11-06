@@ -1,5 +1,4 @@
 const path = require('path');
-
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -24,6 +23,15 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.mp4$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]'
+          }
+        }
       }
     ]
   },
