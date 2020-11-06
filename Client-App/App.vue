@@ -1,17 +1,37 @@
 <template>
   <div class="app">
-    <h1 v-if="showPlaceHolder">Hello World!</h1>
+    <VideoBackground src="/dist/background_lines.mp4" style="height: 100vh; width: 100vw;">
+      <div class="app__content">
+        <Header />
 
-    <ExampleComponent v-if="showExample" />
+        <div class="app__content__body">
+          <section>
+            <SearchBar />
+
+            <ResultList />
+          </section>
+
+          <Trending />
+        </div>
+      </div>
+    </VideoBackground>
   </div>
 </template>
 
 <script>
-import ExampleComponent from './example/ExampleComponent.vue';
+require('./assets/video/background_lines.mp4');
+
+import Header from './header/Header.vue';
+import ResultList from './results/ResultList.vue';
+import SearchBar from './search/SearchBar.vue';
+import Trending from './trending/Trending.vue';
 
 export default {
   components: {
-    ExampleComponent,
+    Header,
+    ResultList,
+    SearchBar,
+    Trending,
   },
 
   data() {
@@ -37,5 +57,28 @@ export default {
   color: white;
   height: 100vh;
   width: 100vw;
+}
+
+.app__content {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.app__content__body {
+  display: flex;
+  height: 100%;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.app__content__body > section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  padding: 1rem 5rem 2rem 5rem;
 }
 </style>
