@@ -1,11 +1,12 @@
 <template>
   <ul class="result-list">
     <ResultItem
-      v-for="p in profilesToShow"
-      :key="p.firstName + p.lastName"
+      v-for="(p, index) in profilesToShow"
+      :key="index + p.firstName + p.lastName"
       :name="`${p.title} ${p.firstName} ${p.lastName}`"
       :org="p.organization"
       :picture="p.picture"
+      @click="$emit('show-profile', index)"
     />
   </ul>
 </template>

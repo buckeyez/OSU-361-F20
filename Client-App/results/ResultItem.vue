@@ -1,5 +1,5 @@
 <template>
-  <li class="result-button">
+  <li class="result-button" @click="$emit('click', $event)">
     <FontAwesomeIcon v-if="picture === ''" icon="user" />
     <img v-if="picture !== ''" :src="picture" alt="Profile Picture" />
 
@@ -45,15 +45,26 @@ export default {
 
 <style>
 .result-button {
+  transition: 0.3s ease-out;
+  transition-property: border-color, transform;
+
   align-items: center;
   background-color: rgba(87, 87, 87, 0.7);
+  border: 0.125rem solid transparent;
   border-radius: 0.5rem;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 14rem;
   margin: 0 2rem 3rem 2rem;
   overflow: hidden;
+  transform: scale(0.97);
   width: 14rem;
+}
+
+.result-button:hover {
+  border-color: #888;
+  transform: scale(1);
 }
 
 .result-button > img {
