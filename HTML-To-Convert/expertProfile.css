@@ -23,6 +23,10 @@
   padding: 20px;
 }
 
+.work {
+  padding: 5px;
+}
+
 /* The Close Button */
 .close {
   /* Position it in the top right corner outside of the modal */
