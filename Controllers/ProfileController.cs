@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using ExpertFinder.Projections;
 using ExpertFinder.Repositories;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ExpertFinder.Controllers
 {
@@ -15,6 +16,9 @@ namespace ExpertFinder.Controllers
     {
       _profileRepo = profileRepo;
     }
+
+    [HttpGet("all")]
+    public async Task<List<Profile>> GetAllProfiles() => await _profileRepo.GetAllProfilesAsync();
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Profile>> GetProfile(int id)

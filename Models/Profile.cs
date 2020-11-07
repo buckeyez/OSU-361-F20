@@ -11,9 +11,16 @@ namespace ExpertFinder.Models
     [Required]
     public string LastName { get; set; }
 
+    public string Email { get; set; }
+    public string GitHub { get; set; }
+    public string LinkedIn { get; set; }
+    public string Organization { get; set; }
+    public string Picture { get; set; }
+
     public Title Title { get; set; }
     public User User { get; set; }
 
+    public ICollection<ProfileCourses> ProfileCourses { get; set; }
     public ICollection<ProfileSkills> ProfileSkills { get; set; }
   }
 }

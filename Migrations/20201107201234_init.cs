@@ -7,6 +7,21 @@ namespace ExpertFinder.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Courses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
+                    NumberPrefix = table.Column<string>(nullable: false),
+                    Number = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Courses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Skills",
                 columns: table => new
                 {
@@ -54,6 +69,11 @@ namespace ExpertFinder.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    GitHub = table.Column<string>(nullable: true),
+                    LinkedIn = table.Column<string>(nullable: true),
+                    Organization = table.Column<string>(nullable: true),
+                    Picture = table.Column<string>(nullable: true),
                     TitleId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: true)
                 },
@@ -72,6 +92,30 @@ namespace ExpertFinder.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProfileCourses",
+                columns: table => new
+                {
+                    ProfileId = table.Column<int>(nullable: false),
+                    CourseId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProfileCourses", x => new { x.ProfileId, x.CourseId });
+                    table.ForeignKey(
+                        name: "FK_ProfileCourses_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProfileCourses_Profiles_ProfileId",
+                        column: x => x.ProfileId,
+                        principalTable: "Profiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,6 +143,11 @@ namespace ExpertFinder.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProfileCourses_CourseId",
+                table: "ProfileCourses",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Profiles_TitleId",
                 table: "Profiles",
                 column: "TitleId");
@@ -117,7 +166,13 @@ namespace ExpertFinder.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ProfileCourses");
+
+            migrationBuilder.DropTable(
                 name: "ProfileSkills");
+
+            migrationBuilder.DropTable(
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Profiles");
