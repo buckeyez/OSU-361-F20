@@ -24,18 +24,9 @@ export default {
 }
 
 .search-bar > input {
-  background-color: #999;
-  border: 0.125rem solid #fff;
   border-radius: 0.5rem 0 0 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
   height: 100%;
-  padding: 0 0.5rem;
   width: 100%;
-}
-
-.search-bar > input:focus {
-  outline: none;
 }
 
 .search-bar > span {

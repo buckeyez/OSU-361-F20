@@ -2,12 +2,25 @@
   <div class="header">
     <h1>Expert Finder</h1>
 
-    <h3>Sign In</h3>
+    <h3 @click="$emit('sign-in')">{{ userText }}</h3>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    user: {
+      type: String,
+      default: '',
+    },
+  },
+
+  computed: {
+    userText() {
+      return this.user === '' ? 'Sign In' : `Welcome ${this.user}`;
+    },
+  },
+};
 </script>
 
 <style>
@@ -30,6 +43,7 @@ export default {};
 }
 
 .header > h3 {
+  cursor: pointer;
   margin-left: auto;
 }
 </style>

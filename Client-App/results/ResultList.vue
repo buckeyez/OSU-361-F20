@@ -33,5 +33,6 @@ export default {
   justify-content: center;
   margin-top: 2rem;
   overflow-y: auto;
+  width: 90%;
 }
 </style>

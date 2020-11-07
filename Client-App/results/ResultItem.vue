@@ -26,7 +26,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: 14rem;
-  margin: 2rem;
+  margin: 0 2rem 3rem 2rem;
   padding-top: 1.5rem;
   width: 14rem;
 }
@@ -36,7 +36,7 @@ export default {
 }
 
 .result-button > section {
-  background-color: #222;
+  background-color: rgba(34, 34, 34, 0.7);
   border-radius: 0 0 0.5rem 0.5rem;
   height: 35%;
   margin-top: auto;
