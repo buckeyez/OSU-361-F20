@@ -1,6 +1,6 @@
 <template>
   <div class="search-bar">
-    <input type="text" placeholder="Search" />
+    <input type="text" placeholder="Search" @input="$emit('search', $event.target.value)" />
     <span><FontAwesomeIcon icon="search" /></span>
   </div>
 </template>

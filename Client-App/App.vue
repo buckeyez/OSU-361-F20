@@ -6,9 +6,13 @@
 
         <div class="app__content__body">
           <section>
-            <SearchBar />
+            <SearchBar @search="searchHandler" />
 
-            <ResultList />
+            <ResultList
+              :filter="searchValue"
+              :profiles="profiles"
+              @show-profile="showProfileHandler"
+            />
           </section>
 
           <Trending />
@@ -19,15 +23,21 @@
     <Modal :active.sync="showLogin">
       <Login @cancel="showLogin = false" @login="loginHandler" />
     </Modal>
+
+    <Modal :active.sync="showProfile">
+      <Profile :profile="profileToShow" @close="closeProfileHandler" />
+    </Modal>
   </div>
 </template>
 
 <script>
+import Axios from 'axios';
 require('./assets/video/background_lines.mp4');
 
 import Header from './header/Header.vue';
 import Login from './login/Login.vue';
 import Modal from './modal/Modal.vue';
+import Profile from './profile/Profile.vue';
 import ResultList from './results/ResultList.vue';
 import SearchBar from './search/SearchBar.vue';
 import Trending from './trending/Trending.vue';
@@ -37,6 +47,7 @@ export default {
     Header,
     Login,
     Modal,
+    Profile,
     ResultList,
     SearchBar,
     Trending,
@@ -44,15 +55,36 @@ export default {
 
   data() {
     return {
-      showLogin: false,
       loggedUser: '',
+      profiles: [],
+      profileToShow: {},
+      searchValue: '',
+      showLogin: false,
+      showProfile: false,
     };
   },
 
+  mounted() {
+    Axios.get('profile/all').then(res => (this.profiles = res.data));
+  },
+
   methods: {
+    closeProfileHandler() {
+      this.showProfile = false;
+    },
+
     loginHandler(userName) {
       this.showLogin = false;
       this.loggedUser = userName;
+    },
+
+    showProfileHandler(profileNumber) {
+      this.profileToShow = this.profiles[profileNumber];
+      this.showProfile = true;
+    },
+
+    searchHandler(search) {
+      this.searchValue = search;
     },
   },
 };

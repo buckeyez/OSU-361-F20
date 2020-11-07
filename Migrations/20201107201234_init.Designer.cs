@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpertFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201102025436_init")]
+    [Migration("20201107201234_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,18 +18,55 @@ namespace ExpertFinder.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
+            modelBuilder.Entity("ExpertFinder.Models.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NumberPrefix")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("ExpertFinder.Models.Profile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("GitHub")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("LastName")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LinkedIn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Organization")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Picture")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("TitleId")
@@ -45,6 +82,21 @@ namespace ExpertFinder.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("ExpertFinder.Models.ProfileCourses", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ProfileId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("ProfileCourses");
                 });
 
             modelBuilder.Entity("ExpertFinder.Models.ProfileSkills", b =>
@@ -120,6 +172,21 @@ namespace ExpertFinder.Migrations
                     b.HasOne("ExpertFinder.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("ExpertFinder.Models.ProfileCourses", b =>
+                {
+                    b.HasOne("ExpertFinder.Models.Course", "Course")
+                        .WithMany("ProfileCourses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ExpertFinder.Models.Profile", "Profile")
+                        .WithMany("ProfileCourses")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ExpertFinder.Models.ProfileSkills", b =>
