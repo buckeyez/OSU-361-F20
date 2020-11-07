@@ -2,7 +2,7 @@
   <div class="app">
     <VideoBackground src="/dist/background_lines.mp4" style="height: 100vh; width: 100vw;">
       <div class="app__content">
-        <Header />
+        <Header :user="loggedUser" @sign-in="showLogin = true" />
 
         <div class="app__content__body">
           <section>
@@ -15,6 +15,10 @@
         </div>
       </div>
     </VideoBackground>
+
+    <Modal :active.sync="showLogin">
+      <Login @cancel="showLogin = false" @login="loginHandler" />
+    </Modal>
   </div>
 </template>
 
@@ -22,6 +26,8 @@
 require('./assets/video/background_lines.mp4');
 
 import Header from './header/Header.vue';
+import Login from './login/Login.vue';
+import Modal from './modal/Modal.vue';
 import ResultList from './results/ResultList.vue';
 import SearchBar from './search/SearchBar.vue';
 import Trending from './trending/Trending.vue';
@@ -29,6 +35,8 @@ import Trending from './trending/Trending.vue';
 export default {
   components: {
     Header,
+    Login,
+    Modal,
     ResultList,
     SearchBar,
     Trending,
@@ -36,13 +44,15 @@ export default {
 
   data() {
     return {
-      showExample: true,
+      showLogin: false,
+      loggedUser: '',
     };
   },
 
-  computed: {
-    showPlaceHolder() {
-      return !this.showExample;
+  methods: {
+    loginHandler(userName) {
+      this.showLogin = false;
+      this.loggedUser = userName;
     },
   },
 };
