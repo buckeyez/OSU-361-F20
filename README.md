@@ -44,6 +44,7 @@
 
 ### Running Server
 
+- For best viewing experience, use Chrome
 - `dotnet run` will kick off the server and allow you to connect with a browser to http://localhost:8080/
 
 ## Development
