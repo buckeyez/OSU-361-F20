@@ -17,7 +17,7 @@ function activateBtns{
     }
     else {
       var message = "Passwords do not match, please try again"
-      document.getElementById("error").value = message;
+      document.getElementById("error").innerHTML = message;
     }
   }
 }
