@@ -50,6 +50,7 @@ export default {
 
 <style>
 @import 'minireset.css/minireset';
+@import './assets/css/scrollbar.css';
 @import './assets/css/app-styles.css';
 
 .app {
