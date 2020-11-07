@@ -6,9 +6,9 @@
 
         <div class="app__content__body">
           <section>
-            <SearchBar />
+            <SearchBar @search="searchHandler" />
 
-            <ResultList :profiles="profiles" />
+            <ResultList :filter="searchValue" :profiles="profiles" />
           </section>
 
           <Trending />
@@ -47,6 +47,7 @@ export default {
     return {
       loggedUser: '',
       profiles: [],
+      searchValue: '',
       showLogin: false,
     };
   },
@@ -59,6 +60,10 @@ export default {
     loginHandler(userName) {
       this.showLogin = false;
       this.loggedUser = userName;
+    },
+
+    searchHandler(search) {
+      this.searchValue = search;
     },
   },
 };
