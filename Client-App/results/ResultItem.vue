@@ -1,9 +1,11 @@
 <template>
   <li class="result-button">
-    <FontAwesomeIcon icon="user" />
+    <FontAwesomeIcon v-if="picture === ''" icon="user" />
+    <img v-if="picture !== ''" :src="picture" alt="Profile Picture" />
 
     <section>
-      <h3>Profile Placeholder</h3>
+      <h3>{{ displayName }}</h3>
+      <span>{{ org }}</span>
     </section>
   </li>
 </template>
@@ -14,6 +16,29 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export default {
   components: {
     FontAwesomeIcon,
+  },
+
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+
+    org: {
+      type: String,
+      default: '',
+    },
+
+    picture: {
+      type: String,
+      default: '',
+    },
+  },
+
+  computed: {
+    displayName() {
+      return this.name === '' ? 'Profile Placeholder' : this.name;
+    },
   },
 };
 </script>
@@ -27,8 +52,12 @@ export default {
   flex-direction: column;
   height: 14rem;
   margin: 0 2rem 3rem 2rem;
-  padding-top: 1.5rem;
+  overflow: hidden;
   width: 14rem;
+}
+
+.result-button > img {
+  min-height: 75%;
 }
 
 .result-button > svg {
@@ -36,11 +65,14 @@ export default {
 }
 
 .result-button > section {
+  align-items: center;
   background-color: rgba(34, 34, 34, 0.7);
   border-radius: 0 0 0.5rem 0.5rem;
-  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: auto;
-  padding: 0.5rem;
+  min-height: 25%;
   width: 100%;
 }
 

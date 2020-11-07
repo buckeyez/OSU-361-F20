@@ -8,7 +8,7 @@
           <section>
             <SearchBar />
 
-            <ResultList />
+            <ResultList :profiles="profiles" />
           </section>
 
           <Trending />
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import Axios from 'axios';
 require('./assets/video/background_lines.mp4');
 
 import Header from './header/Header.vue';
@@ -44,9 +45,14 @@ export default {
 
   data() {
     return {
-      showLogin: false,
       loggedUser: '',
+      profiles: [],
+      showLogin: false,
     };
+  },
+
+  mounted() {
+    Axios.get('profile/all').then(res => (this.profiles = res.data));
   },
 
   methods: {
