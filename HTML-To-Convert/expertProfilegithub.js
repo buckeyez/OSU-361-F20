@@ -14,7 +14,7 @@ window.onclick = function(event) {
 
 function gitHubPopup(username)
 {
-  console.log("triggered");
+  //console.log("triggered");
 
   var request = new XMLHttpRequest();
 
@@ -30,14 +30,24 @@ function gitHubPopup(username)
       popUp.style.display= "block";
 
       for (var i = 0; i < jsonResponse.length; i++)
-      {        
+      {
+        var repoP = document.createElement("p"); 
         var repoName = document.createTextNode("Repo Name: " + jsonResponse[i].name + "\n");
+
+        var repoDescP = document.createElement("p"); 
         var repoDescription = document.createTextNode("Description: " + jsonResponse[i].description + " ");
+
+        var repoUpdatedP = document.createElement("p"); 
         var repoUpdatedTS = document.createTextNode("Last Updated: " + jsonResponse[i].updated_at + " ");
 
-        popUp.append(repoName);
-        popUp.append(repoDescription);
-        popUp.append(repoUpdatedTS);
+        repoP.appendChild(repoName)
+        popUp.appendChild(repoP);
+
+        repoDescP.appendChild(repoDescription)
+        popUp.appendChild(repoDescP);
+
+        repoUpdatedP.appendChild(repoUpdatedTS)
+        popUp.appendChild(repoUpdatedP);
 
         var newLink = document.createElement('a');
         newLink.href = jsonResponse[i].html_url;
@@ -47,8 +57,9 @@ function gitHubPopup(username)
 
         var lineBreak = document.createElement("br");
         popUp.append(lineBreak);
+        popUp.append(lineBreak);
 
-        console.log(jsonResponse[i].full_name);
+        //console.log(jsonResponse[i].full_name);
       }
     }
   };
@@ -57,7 +68,7 @@ function gitHubPopup(username)
   
   request.send();
 
-  console.log(request);
+  //console.log(request);
 
 }
 
