@@ -1,5 +1,6 @@
 
 body {
+    /*line height predefines the height of the body, giving it more space to start. Makes it so the page is not so crammed together.*/
   line-height: 30px;
   text-align: center;
   background-color: darkgrey;
@@ -12,12 +13,14 @@ h2 {
   font-weight: 800;
   margin-top: 0px;
   margin-bottom: 60px;
+  border-radius: 9px;
 }
 
 .form {
   background-color: black;
   width: 50%;
   display: inline-block;
+  border-radius: 9px;
 }
 
 .proSpan {
@@ -26,7 +29,6 @@ h2 {
 }
 
 .classSpan {
-  padding-left: 0px;
   padding-right: 5px;
 }
 
@@ -35,6 +37,7 @@ h2 {
 }
 
 .signSpan {
+    /*float just allows the sign up button to be displayed on the right side of the page.*/
   padding-top: 5px;
   float: right;
   text-align: right;
