@@ -61,7 +61,7 @@ h2 {
   margin-bottom: 15px;
 }
 
-/*This paragraph will display if the password is not entered correctly twice. Otherwise it is not showm.*/
-p {
+/*This span will display if the password is not entered correctly twice. Otherwise it is not showm. Now displayed properly*/
+span {
   color: white;
 }
