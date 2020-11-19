@@ -21,6 +21,7 @@ h2 {
   width: 50%;
   display: inline-block;
   border-radius: 9px;
+  padding: 5px;
 }
 
 .proSpan {
@@ -33,38 +34,43 @@ h2 {
 }
 
 .codeSpan {
-  padding-right: 5px;
+  padding-right;
 }
 
 .signSpan {
-    /*float just allows the sign up button to be displayed on the right side of the page.*/
+  /*float just allows the sign up button to be displayed on the right side of the page.*/
   padding-top: 5px;
   float: right;
   text-align: right;
+  padding: 5px;
 }
 
 .userNameDiv {
   margin-top: 20px;
   color: white;
   margin-right: 45px;
+  padding: 5px;
 }
 
 .passwordDiv {
   margin-top: 20px;
   color: white;
   margin-right: 45px;
+  padding: 5px;
 }
 
 .signBtn {
   float: right;
   margin-right: 10px;
   margin-bottom: 15px;
+  padding: 5px;
 }
 
 .loginBtn {
   float: right;
   margin-right: 20px;
   margin-bottom: 15px;
+  padding: 5px;
 }
 
 .label {
@@ -73,4 +79,5 @@ h2 {
   text-align: center;
   border-bottom: 4px solid white;
   margin-left: 10px;
+  padding: 5px;
 }
