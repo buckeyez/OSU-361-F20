@@ -6,6 +6,7 @@ body {
   background-color: darkgrey;
 }
 
+
 h2 {
   text-align: left;
   padding-left: 70px;
@@ -16,6 +17,7 @@ h2 {
   border-radius: 9px;
 }
 
+/*inline block allows for the form to be centered in the page even if the width is 50%, and border radius allows for the corners to be rounded. */
 .form {
   background-color: black;
   width: 50%;
@@ -73,6 +75,7 @@ h2 {
   padding: 5px;
 }
 
+/*solid white border allows for the border to look more appealing*/
 .label {
   color: white;
   font-size: 25px;

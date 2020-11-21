@@ -24,6 +24,8 @@ function activateBtns{
 }
 
 
+//checks for passwords matching.
+
 function accepted(passwordOne, passwordTwo) {
 
   bool = passwordOne.localeCompare(passwordTwo);
