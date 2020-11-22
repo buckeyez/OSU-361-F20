@@ -34,18 +34,6 @@ function gitHubPopup(username)
         repoP.appendChild(repoName)
         popUp.appendChild(repoP);
 
-        var repoDescP = document.createElement("p"); 
-        var repoDescription = document.createTextNode("Description: " + jsonResponse[i].description + " ");
-
-        repoDescP.appendChild(repoDescription)
-        popUp.appendChild(repoDescP);
-
-        var repoUpdatedP = document.createElement("p"); 
-        var repoUpdatedTS = document.createTextNode("Last Updated: " + jsonResponse[i].updated_at + " ");
-
-        repoUpdatedP.appendChild(repoUpdatedTS)
-        popUp.appendChild(repoUpdatedP);
-
         var newLink = document.createElement('a');
         newLink.href = jsonResponse[i].html_url;
 
