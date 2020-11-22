@@ -48,7 +48,7 @@ function gitHubPopup(username)
 
         var newLink = document.createElement('a');
         newLink.href = jsonResponse[i].html_url;
-        
+
         var linkTextNode = document.createTextNode(jsonResponse[i].full_name)
         newLink.appendChild(linkTextNode);
         popUp.appendChild(newLink);
@@ -72,9 +72,4 @@ function gitHubPopupOut()
 {
   var popUp = document.getElementById('githubPopup');
   popUp.style.display= "none";
-}
-
-function gitHubPopupIn()
-{
-  clearTimeout();
 }
