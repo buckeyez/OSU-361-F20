@@ -17,11 +17,14 @@ function activateBtns{
     }
     else {
       var message = "Passwords do not match, please try again"
-      document.getElementById("error").innerHTML = message;
+      alert(message);
+      event.preventDefault();
     }
   }
 }
 
+
+//checks for passwords matching.
 
 function accepted(passwordOne, passwordTwo) {
 

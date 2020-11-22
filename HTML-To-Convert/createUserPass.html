@@ -7,34 +7,30 @@
 </head>
 <body>
   <div class="body">
-    <div>
-      <div class=" head">
-        <div>
-          <h1>Expert Finder</h1>
+    <div class="header">
+      <h1>Expert Finder</h1>
+    </div>
+    <h2>Create Account</h2>
+    <div class="frame">
+      <form class="form">
+        <br>
+        <div class="userNameDiv">
+          <label>Username:</label>
+          <input type="text" class="username" id="username" name="username">
         </div>
-        <h2>Create Account</h2>
-        <div class="frame">
-          <form class="form">
-            <br>
-            <div class="userNameDiv">S
-              <label>Username:</label>
-              <input type="text" class="username" id="username" name="username">
-            </div>
-            <div class="passwordDiv">
-              <label>Password:</label>
-              <input type="password" class="password" id="password" name="password">
-              <div class="confirmDiv">
-                <label>Confirm:</label>
-                <input type="password" class="password2" id="password2" name="password2">
-              </div>
-            </div>
-            <div class=" buttonDiv">
-              <button type="submit" class="confirmBtn" id="confirmBtn">Confirm</button>
-            </div>
-            <p id="error"></p>
-          </form>
+        <div class="passwordDiv">
+          <label>Password:</label>
+          <input type="password" class="password" id="password" name="password">
+          <div class="confirmDiv">
+            <label>Confirm:</label>
+            <input type="password" class="password2" id="password2" name="password2">
+          </div>
         </div>
-      </div>
+        <div class=" buttonDiv">
+          <button type="submit" class="confirmBtn" id="confirmBtn">Confirm</button>
+        </div>
+      </form>
+      <span id="error"></span><span id=" errorTwo"></span>
     </div>
   </div>
 </body>

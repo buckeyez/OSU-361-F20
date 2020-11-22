@@ -5,14 +5,19 @@ body {
   background-color: darkgrey;
 }
 
+
 h1 {
   padding: 5px;
   padding-left: 70px;
   text-align: left;
   font-weight: 800;
+  /*i want the header to be as close to the top as the page as possible. Need to specify that margin and padding is 0px*/
   margin-top: 0px;
+  padding-top: 0px;
   margin-bottom: 60px;
   border: 4px solid black;
+  /*Border radius curves the corners of the form, this allows for a smoother look of the edges. (note this for all of the borders)*/
+  border-radius: 10px;
 }
 
 h2 {
@@ -20,12 +25,15 @@ h2 {
   border: 2px solid black;
   width: 50%;
   display: inline-block;
+  border-radius: 8px;
 }
 
 .form {
   background-color: black;
   width: 50%;
+  /*Allows for the form to be displayed in the center of the page. Text-align does not work as the form is not text.*/
   display: inline-block;
+  border-radius: 8px;
 }
 
 .userNameDiv {
@@ -53,6 +61,10 @@ h2 {
   margin-bottom: 15px;
 }
 
-p {
+/*This span will display if the password is not entered correctly twice. Otherwise it is not showm. Now displayed properly*/
+span {
   color: white;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

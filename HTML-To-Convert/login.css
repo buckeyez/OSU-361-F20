@@ -1,9 +1,11 @@
 
 body {
+    /*line height predefines the height of the body, giving it more space to start. Makes it so the page is not so crammed together.*/
   line-height: 30px;
   text-align: center;
   background-color: darkgrey;
 }
+
 
 h2 {
   text-align: left;
@@ -12,12 +14,16 @@ h2 {
   font-weight: 800;
   margin-top: 0px;
   margin-bottom: 60px;
+  border-radius: 9px;
 }
 
+/*inline block allows for the form to be centered in the page even if the width is 50%, and border radius allows for the corners to be rounded. */
 .form {
   background-color: black;
   width: 50%;
   display: inline-block;
+  border-radius: 9px;
+  padding: 5px;
 }
 
 .proSpan {
@@ -26,48 +32,55 @@ h2 {
 }
 
 .classSpan {
-  padding-left: 0px;
   padding-right: 5px;
 }
 
 .codeSpan {
-  padding-right: 5px;
+  padding-right;
 }
 
 .signSpan {
+  /*float just allows the sign up button to be displayed on the right side of the page.*/
   padding-top: 5px;
   float: right;
   text-align: right;
+  padding: 5px;
 }
 
 .userNameDiv {
   margin-top: 20px;
   color: white;
   margin-right: 45px;
+  padding: 5px;
 }
 
 .passwordDiv {
   margin-top: 20px;
   color: white;
   margin-right: 45px;
+  padding: 5px;
 }
 
 .signBtn {
   float: right;
   margin-right: 10px;
   margin-bottom: 15px;
+  padding: 5px;
 }
 
 .loginBtn {
   float: right;
   margin-right: 20px;
   margin-bottom: 15px;
+  padding: 5px;
 }
 
+/*solid white border allows for the border to look more appealing*/
 .label {
   color: white;
   font-size: 25px;
   text-align: center;
   border-bottom: 4px solid white;
   margin-left: 10px;
+  padding: 5px;
 }
