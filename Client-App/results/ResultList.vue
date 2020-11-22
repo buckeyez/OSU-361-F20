@@ -42,10 +42,27 @@ export default {
   methods: {
     filterPredicate(profile) {
       const filterLC = this.filter.toLowerCase();
-      return (
-        profile.firstName.toLowerCase().includes(filterLC) ||
-        profile.lastName.toLowerCase().includes(filterLC)
-      );
+      let found = false;
+      found = profile.firstName.toLowerCase().includes(filterLC);
+      found = found ? found : profile.lastName.toLowerCase().includes(filterLC);
+
+      const proCourses = profile.courses.map(c => c.toLowerCase());
+      for (let i = 0; i < proCourses.length; ++i) {
+        found = found ? found : proCourses[i].includes(filterLC);
+        if (found) {
+          break;
+        }
+      }
+
+      const proSkills = profile.skills.map(s => s.toLowerCase());
+      for (let i = 0; i < proSkills.length; ++i) {
+        found = found ? found : proSkills[i].includes(filterLC);
+        if (found) {
+          break;
+        }
+      }
+
+      return found;
     },
   },
 };

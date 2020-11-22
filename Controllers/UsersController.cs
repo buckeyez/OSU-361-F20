@@ -7,13 +7,26 @@ namespace ExpertFinder.Controllers
 {
   [ApiController]
   [Route("[controller]")]
-  public class UserController : Controller
+  public class UsersController : Controller
   {
     private IUserRepo _userRepo;
 
-    public UserController(IUserRepo userRepo)
+    public UsersController(IUserRepo userRepo)
     {
       _userRepo = userRepo;
+    }
+
+    [HttpPost("add")]
+    public async Task<ActionResult> AddUser([FromForm] User user)
+    {
+      var result = await _userRepo.AddUserAsync(user);
+
+      if (!result)
+      {
+        return Conflict();
+      }
+
+      return CreatedAtAction(nameof(GetUser), new { name = user.Name }, user);
     }
 
     [HttpGet("{name}")]
