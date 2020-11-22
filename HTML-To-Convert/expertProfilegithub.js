@@ -14,8 +14,6 @@ window.onclick = function(event) {
 
 function gitHubPopup(username)
 {
-  //console.log("triggered");
-
   var request = new XMLHttpRequest();
 
   var lineBreak = document.createElement("br");
@@ -25,7 +23,6 @@ function gitHubPopup(username)
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var jsonResponse = JSON.parse(this.responseText);
-      console.log(jsonResponse)
 
       popUp.style.display= "block";
 
@@ -59,7 +56,6 @@ function gitHubPopup(username)
         popUp.append(lineBreak);
         popUp.append(lineBreak);
 
-        //console.log(jsonResponse[i].full_name);
       }
     }
   };
@@ -68,7 +64,6 @@ function gitHubPopup(username)
   
   request.send();
 
-  //console.log(request);
 
 }
 
