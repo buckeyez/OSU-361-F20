@@ -14,8 +14,6 @@ window.onclick = function(event) {
 
 function gitHubPopup(username)
 {
-  //console.log("triggered");
-
   var request = new XMLHttpRequest();
 
   var lineBreak = document.createElement("br");
@@ -25,7 +23,6 @@ function gitHubPopup(username)
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var jsonResponse = JSON.parse(this.responseText);
-      console.log(jsonResponse)
 
       popUp.style.display= "block";
 
@@ -34,23 +31,24 @@ function gitHubPopup(username)
         var repoP = document.createElement("p"); 
         var repoName = document.createTextNode("Repo Name: " + jsonResponse[i].name + "\n");
 
-        var repoDescP = document.createElement("p"); 
-        var repoDescription = document.createTextNode("Description: " + jsonResponse[i].description + " ");
-
-        var repoUpdatedP = document.createElement("p"); 
-        var repoUpdatedTS = document.createTextNode("Last Updated: " + jsonResponse[i].updated_at + " ");
-
         repoP.appendChild(repoName)
         popUp.appendChild(repoP);
 
+        var repoDescP = document.createElement("p"); 
+        var repoDescription = document.createTextNode("Description: " + jsonResponse[i].description + " ");
+
         repoDescP.appendChild(repoDescription)
         popUp.appendChild(repoDescP);
+
+        var repoUpdatedP = document.createElement("p"); 
+        var repoUpdatedTS = document.createTextNode("Last Updated: " + jsonResponse[i].updated_at + " ");
 
         repoUpdatedP.appendChild(repoUpdatedTS)
         popUp.appendChild(repoUpdatedP);
 
         var newLink = document.createElement('a');
         newLink.href = jsonResponse[i].html_url;
+        
         var linkTextNode = document.createTextNode(jsonResponse[i].full_name)
         newLink.appendChild(linkTextNode);
         popUp.appendChild(newLink);
@@ -59,7 +57,6 @@ function gitHubPopup(username)
         popUp.append(lineBreak);
         popUp.append(lineBreak);
 
-        //console.log(jsonResponse[i].full_name);
       }
     }
   };
@@ -68,7 +65,6 @@ function gitHubPopup(username)
   
   request.send();
 
-  //console.log(request);
 
 }
 
