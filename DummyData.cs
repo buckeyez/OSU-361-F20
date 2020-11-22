@@ -111,6 +111,13 @@ namespace ExpertFinder.DummyData
           Title = phdTitle,
           Email = "tony.stark@avengers.com",
           Organization = "Stark Industries",
+          Biography = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet nunc ac erat
+          placerat, sed pellentesque tortor finibus. Praesent quis facilisis nunc, varius maximus
+          nunc. Nulla maximus interdum justo sit amet lacinia. Suspendisse vitae semper mauris.
+          Praesent elementum luctus aliquam. Aenean luctus suscipit erat vel dictum. Nullam eleifend
+          massa sed mi efficitur, ut rhoncus felis posuere. Sed non maximus augue, at consequat
+          lorem. Ut fermentum sit amet sem eget mattis. Etiam cursus mauris non ante consectetur, a
+          faucibus lectus porta. Vestibulum sit amet porttitor nulla.",
           Picture = "https://vignette.wikia.nocookie.net/marvelhigh/images/8/8c/Tony_Stark.jpg/revision/latest?cb=20180331224523"
         });
 
@@ -121,6 +128,15 @@ namespace ExpertFinder.DummyData
           Title = mrTitle,
           Email = "bill.gates@microsoft.com",
           Organization = "Microsoft",
+          LinkedIn = "https://www.linkedin.com/in/williamhgates/",
+          GitHub = "microsoft",
+          Biography = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet nunc ac erat
+          placerat, sed pellentesque tortor finibus. Praesent quis facilisis nunc, varius maximus
+          nunc. Nulla maximus interdum justo sit amet lacinia. Suspendisse vitae semper mauris.
+          Praesent elementum luctus aliquam. Aenean luctus suscipit erat vel dictum. Nullam eleifend
+          massa sed mi efficitur, ut rhoncus felis posuere. Sed non maximus augue, at consequat
+          lorem. Ut fermentum sit amet sem eget mattis. Etiam cursus mauris non ante consectetur, a
+          faucibus lectus porta. Vestibulum sit amet porttitor nulla.",
           Picture = "https://api.time.com/wp-content/uploads/2018/09/bill-gates-africa.jpg"
         });
 
@@ -131,6 +147,13 @@ namespace ExpertFinder.DummyData
           Title = mrTitle,
           Email = "jeff.bezos@amazon.com",
           Organization = "Amazon",
+          Biography = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet nunc ac erat
+          placerat, sed pellentesque tortor finibus. Praesent quis facilisis nunc, varius maximus
+          nunc. Nulla maximus interdum justo sit amet lacinia. Suspendisse vitae semper mauris.
+          Praesent elementum luctus aliquam. Aenean luctus suscipit erat vel dictum. Nullam eleifend
+          massa sed mi efficitur, ut rhoncus felis posuere. Sed non maximus augue, at consequat
+          lorem. Ut fermentum sit amet sem eget mattis. Etiam cursus mauris non ante consectetur, a
+          faucibus lectus porta. Vestibulum sit amet porttitor nulla.",
           Picture = "https://specials-images.forbesimg.com/imageserve/5fa341fc79e490dbc4d29ff4/960x0.jpg?fit=scale"
         });
       }

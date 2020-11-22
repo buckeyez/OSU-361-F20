@@ -47,6 +47,12 @@ namespace ExpertFinder.Data
           .WithMany(s => s.ProfileSkills)
           .HasForeignKey(e => e.SkillId);
       });
+
+      modelBuilder.Entity<User>(entity =>
+      {
+        entity.HasIndex(e => e.Name)
+          .IsUnique();
+      });
     }
   }
 }

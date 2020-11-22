@@ -3,6 +3,8 @@
     <h1>Expert Finder</h1>
 
     <h3 @click="$emit('sign-in')">{{ userText }}</h3>
+    <h3>&nbsp;/&nbsp;</h3>
+    <h3 @click="$emit('sign-up')">Sign Up</h3>
   </div>
 </template>
 
@@ -44,6 +46,9 @@ export default {
 
 .header > h3 {
   cursor: pointer;
+}
+
+.header > h3:first-of-type {
   margin-left: auto;
 }
 </style>
