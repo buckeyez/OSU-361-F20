@@ -1,7 +1,7 @@
 <template>
   <li class="result-button" @click="$emit('click', $event)">
-    <FontAwesomeIcon v-if="picture === ''" icon="user" />
-    <img v-if="picture !== ''" :src="picture" alt="Profile Picture" />
+    <img v-if="picture" :src="picture" alt="Profile Picture" />
+    <FontAwesomeIcon v-else icon="user" />
 
     <section>
       <h3>{{ displayName }}</h3>
@@ -72,7 +72,8 @@ export default {
 }
 
 .result-button > svg {
-  font-size: 6.5rem;
+  font-size: 7.5rem;
+  margin-top: 1.5rem;
 }
 
 .result-button > section {

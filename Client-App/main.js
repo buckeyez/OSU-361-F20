@@ -4,6 +4,9 @@ import App from './App.vue';
 import { Plugin } from 'vue-responsive-video-background-player';
 Vue.use(Plugin);
 
+import Popover from 'vue-js-popover';
+Vue.use(Popover, { tooltip: true });
+
 import {
   faCode,
   faEnvelope,

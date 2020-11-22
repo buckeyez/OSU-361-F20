@@ -8,15 +8,27 @@
 
     <section class="profile__header">
       <div class="profile__header__picture">
-        <FontAwesomeIcon v-if="!showPicture" icon="user" />
         <img v-if="showPicture" :src="profile.picture" alt="Profile Picture" />
+        <FontAwesomeIcon v-else icon="user" />
       </div>
 
       <div class="profile__header__details">
         <section>
-          <FontAwesomeIcon class="github" :icon="['fab', 'github']" />
-          <FontAwesomeIcon class="linkedin" :icon="['fab', 'linkedin']" />
+          <FontAwesomeIcon v-popover:foo.right class="github" :icon="['fab', 'github']" />
+          <a :href="profile.linkedIn" target="_blank">
+            <FontAwesomeIcon class="linkedin" :icon="['fab', 'linkedin']" />
+          </a>
           <FontAwesomeIcon class="email" icon="envelope" />
+
+          <Popover name="foo" style="left: 2.5rem; top: unset;">
+            <div class="pop-over__mine">
+              <h3>GitHub Repositories</h3>
+              <hr />
+              <a v-for="repo in repos" :key="repo.name" :href="repo.html_url" target="_blank">
+                {{ repo.name }}
+              </a>
+            </div>
+          </Popover>
         </section>
 
         <h1>{{ profile.title }} {{ profile.firstName }} {{ profile.lastName }}</h1>
@@ -27,15 +39,7 @@
     <section class="profile__details">
       <div class="profile__details__bio">
         <h3>Biography</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet nunc ac erat
-          placerat, sed pellentesque tortor finibus. Praesent quis facilisis nunc, varius maximus
-          nunc. Nulla maximus interdum justo sit amet lacinia. Suspendisse vitae semper mauris.
-          Praesent elementum luctus aliquam. Aenean luctus suscipit erat vel dictum. Nullam eleifend
-          massa sed mi efficitur, ut rhoncus felis posuere. Sed non maximus augue, at consequat
-          lorem. Ut fermentum sit amet sem eget mattis. Etiam cursus mauris non ante consectetur, a
-          faucibus lectus porta. Vestibulum sit amet porttitor nulla.
-        </p>
+        <p>{{ profile.biography }}</p>
       </div>
 
       <div class="profile_details__lists">
@@ -47,6 +51,7 @@
 </template>
 
 <script>
+import Axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import List from './List.vue';
@@ -64,18 +69,31 @@ export default {
     },
   },
 
+  data() {
+    return {
+      repos: [],
+    };
+  },
+
   computed: {
     showPicture() {
       if (this.profile === {}) {
         return false;
       }
 
-      if (
-        this.profile !== {} &&
-        (this.profile.picture !== undefined || this.profile.picture !== '')
-      ) {
-        return true;
-      }
+      return this.profile.picture;
+    },
+  },
+
+  watch: {
+    profile: {
+      immediate: true,
+      handler(newProfile) {
+        console.log('hit');
+        Axios.get(`https://api.github.com/users/${newProfile.gitHub}/repos`).then(
+          res => (this.repos = res.data.slice(0, 10))
+        );
+      },
     },
   },
 };
@@ -138,6 +156,7 @@ export default {
   align-items: center;
   display: flex;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .profile__header__details > section > * {
@@ -190,5 +209,24 @@ export default {
 
 .profile_details__lists > * {
   margin-bottom: 1rem;
+}
+
+.pop-over__mine {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.pop-over__mine > h3 {
+  margin-bottom: 0.3rem;
+}
+
+.pop-over__mine > a {
+  font-weight: 600;
+  margin-top: 0.3rem;
+  text-decoration: none;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="app">
     <VideoBackground src="/dist/background_lines.mp4" style="height: 100vh; width: 100vw;">
       <div class="app__content">
-        <Header :user="loggedUser" @sign-in="showLogin = true" />
+        <Header :user="loggedUser" @sign-in="showLogin = true" @sign-up="showSignUp = true" />
 
         <div class="app__content__body">
           <section>
@@ -21,11 +21,15 @@
     </VideoBackground>
 
     <Modal :active.sync="showLogin">
-      <Login @cancel="showLogin = false" @login="loginHandler" />
+      <Login v-if="showLogin" @cancel="showLogin = false" @login="loginHandler" />
     </Modal>
 
     <Modal :active.sync="showProfile">
-      <Profile :profile="profileToShow" @close="closeProfileHandler" />
+      <Profile v-if="showProfile" :profile="profileToShow" @close="closeProfileHandler" />
+    </Modal>
+
+    <Modal :active.sync="showSignUp">
+      <SignUp v-if="showSignUp" @close="signupHandler" />
     </Modal>
   </div>
 </template>
@@ -40,6 +44,7 @@ import Modal from './modal/Modal.vue';
 import Profile from './profile/Profile.vue';
 import ResultList from './results/ResultList.vue';
 import SearchBar from './search/SearchBar.vue';
+import SignUp from './sign-up/SignUp.vue';
 import Trending from './trending/Trending.vue';
 
 export default {
@@ -50,6 +55,7 @@ export default {
     Profile,
     ResultList,
     SearchBar,
+    SignUp,
     Trending,
   },
 
@@ -61,11 +67,12 @@ export default {
       searchValue: '',
       showLogin: false,
       showProfile: false,
+      showSignUp: false,
     };
   },
 
   mounted() {
-    Axios.get('profile/all').then(res => (this.profiles = res.data));
+    Axios.get('profiles').then(res => (this.profiles = res.data));
   },
 
   methods: {
@@ -76,6 +83,11 @@ export default {
     loginHandler(userName) {
       this.showLogin = false;
       this.loggedUser = userName;
+    },
+
+    signupHandler() {
+      this.showSignUp = false;
+      Axios.get('profiles').then(res => (this.profiles = res.data));
     },
 
     showProfileHandler(profileNumber) {

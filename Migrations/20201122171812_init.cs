@@ -69,6 +69,7 @@ namespace ExpertFinder.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
+                    Biography = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     GitHub = table.Column<string>(nullable: true),
                     LinkedIn = table.Column<string>(nullable: true),
@@ -161,6 +162,12 @@ namespace ExpertFinder.Migrations
                 name: "IX_ProfileSkills_SkillId",
                 table: "ProfileSkills",
                 column: "SkillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Name",
+                table: "Users",
+                column: "Name",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

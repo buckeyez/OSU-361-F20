@@ -2,9 +2,9 @@ using ExpertFinder.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace ExpertFinder
 {
   public class Program
@@ -29,6 +29,11 @@ namespace ExpertFinder
         {
           webBuilder.UseUrls("http://localhost:8080");
           webBuilder.UseStartup<Startup>();
+        })
+        .ConfigureLogging((context, logging) =>
+        {
+          logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.None);
+          logging.AddFilter("Microsoft.EntityFrameworkCore.Update", LogLevel.None);
         });
   }
 }
