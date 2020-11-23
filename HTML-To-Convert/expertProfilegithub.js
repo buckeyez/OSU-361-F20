@@ -28,7 +28,7 @@ function gitHubPopup(username)
       for (var i = 0; i < jsonResponse.length; i++)
       {
         var repoP = document.createElement("p"); 
-        var repoName = document.createTextNode("Repo Name: " + jsonResponse[i].name + "\n");
+        var repoName = document.createTextNode(jsonResponse[i].name + "\n");
 
         repoP.appendChild(repoName)
         popUp.appendChild(repoP);
