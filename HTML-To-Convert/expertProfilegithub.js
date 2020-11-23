@@ -15,9 +15,6 @@ window.onclick = function(event) {
 function gitHubPopup(username)
 {
   var request = new XMLHttpRequest();
-
-  var lineBreak = document.createElement("br");
-
   var popUp = document.getElementById('githubPopup');
 
   request.onreadystatechange = function() {
@@ -25,6 +22,8 @@ function gitHubPopup(username)
       var jsonResponse = JSON.parse(this.responseText);
 
       popUp.style.display= "block";
+
+      var lineBreak = document.createElement("br");
 
       for (var i = 0; i < jsonResponse.length; i++)
       {
@@ -41,8 +40,6 @@ function gitHubPopup(username)
         newLink.appendChild(linkTextNode);
         popUp.appendChild(newLink);
 
-        var lineBreak = document.createElement("br");
-        popUp.append(lineBreak);
         popUp.append(lineBreak);
 
       }
