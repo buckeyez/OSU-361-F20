@@ -22,7 +22,7 @@ window.onclick = function(event) {
 
 
 
-  function profileArray() {
+  function profileArray() { //need to pull from server
   var profiles = new Array('<a href="https://github.com/" target="_blank"><img src="images/profile.png" /></a>', 
   '<a href="https://github.com/" target="_blank"><img src="images/profile.png" /></a>', 
   '<a href="https://github.com/" target="_blank"><img src="images/profile.png" /></a>', 
