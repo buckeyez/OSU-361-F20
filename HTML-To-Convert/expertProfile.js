@@ -8,7 +8,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-  function linksArray() {
+  function linksArray() { //array for information based on individual's account
   var links = new Array('<img src="images/avatar.png" alt="Avatar" class="avatar">', 
   '<a href="https://github.com/" target="_blank"><img src="images/githubLogo.png" /></a>',
   '<a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedinLogo.png" /></a>', 
