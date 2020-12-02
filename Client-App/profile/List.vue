@@ -37,6 +37,7 @@ export default {
 .profile-list > ul > li {
   border: 0.125rem solid #222;
   border-radius: 1rem;
+  margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   padding: 0.2rem 0.7rem;
 }
