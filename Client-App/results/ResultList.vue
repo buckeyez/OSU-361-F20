@@ -6,7 +6,7 @@
       :name="`${p.title} ${p.firstName} ${p.lastName}`"
       :org="p.organization"
       :picture="p.picture"
-      @click="$emit('show-profile', index)"
+      @click="$emit('show-profile', getProfileIndex(index))"
     />
   </ul>
 </template>
@@ -63,6 +63,12 @@ export default {
       }
 
       return found;
+    },
+
+    getProfileIndex(currentIndex) {
+      const profile = this.profilesToShow[currentIndex];
+      const index = this.profiles.indexOf(profile);
+      return index;
     },
   },
 };
