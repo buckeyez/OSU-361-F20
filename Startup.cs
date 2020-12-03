@@ -55,7 +55,12 @@ namespace ExpertFinder
 
     private void AddRepositories(IServiceCollection services)
     {
+      services.AddTransient<ICourseRepo, CourseRepo>();
       services.AddTransient<IProfileRepo, ProfileRepo>();
+      services.AddTransient<IProfileCoursesRepo, ProfileCoursesRepo>();
+      services.AddTransient<IProfileSkillsRepo, ProfileSkillsRepo>();
+      services.AddTransient<ISkillRepo, SkillRepo>();
+      services.AddTransient<ITitleRepo, TitleRepo>();
       services.AddTransient<IUserRepo, UserRepo>();
     }
   }

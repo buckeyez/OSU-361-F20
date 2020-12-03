@@ -11,6 +11,7 @@ namespace ExpertFinder.Projections
     public string GitHub { get; set; }
     public string LinkedIn { get; set; }
     public string Organization { get; set; }
+    public string Biography { get; set; }
     public string Picture { get; set; }
     public ICollection<string> Courses { get; set; }
     public ICollection<string> Skills { get; set; }
