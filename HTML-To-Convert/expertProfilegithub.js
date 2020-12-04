@@ -56,5 +56,6 @@ function gitHubPopup(username)
 function gitHubPopupOut()
 {
   var popUp = document.getElementById('githubPopup');
+  popUp.innerHTML = '';
   popUp.style.display= "none";
 }
