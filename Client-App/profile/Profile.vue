@@ -18,7 +18,9 @@
           <a :href="profile.linkedIn" target="_blank">
             <FontAwesomeIcon class="linkedin" :icon="['fab', 'linkedin']" />
           </a>
-          <FontAwesomeIcon class="email" icon="envelope" />
+          <a :href="`mailto:${profile.email}`">
+            <FontAwesomeIcon class="email" icon="envelope" />
+          </a>
 
           <Popover name="foo" style="left: 2.5rem; top: unset;">
             <div class="pop-over__mine">
